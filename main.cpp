@@ -11,29 +11,31 @@ EC_Calculator_Henderson
 #include<sstream> //for string manipulation and comparison
 using namespace std;
 
-void calculator (double, double); 
-void showMenu(string);
+void calculator (double&, double&); 
+void showMenu();
 void handleOption();
-void addition(double,double,string);
-void multiplication (double,double, string);
-void division (double, double, string);
-void subtraction(string);
+void addition(double&,double&);
+void multiplication (double&,double&);
+void division (double&, double&);
+void subtraction(double&, double&);
 
 int main()
  {
   string option = " ";
   char op = '\0';
-  double n = 0.00;
+  double n1 = 0.00;
+  double n2 = 0.0;
   double sum = 0.00;
   cout << fixed << setprecision(3) << endl;
-calculator(n,n);
-showMenu(string);
 handleOption();
+calculator(n1,n2);
+//showMenu();
 
-addition(n,n);
+
+/*addition(n,n);
 multiplication (n,n);
 division (n,n);
-subtraction(n,n);
+subtraction(n,n);*/
 
     return 0;
 }
@@ -54,10 +56,10 @@ cout << "you have entered: " << n1 << " and: " << n2 << ".\n what would you like
 
 }
 
-void showMenu(string)
+void showMenu()
 { 
   string option = "";
-  cout <<"\nMENU" << endl;
+   cout << "Please choose an option from the menu: " << endl;
   cout << "A: Addition" << endl;
   cout << "B: Multiplication" << endl;
   cout << "C: Division" << endl;
@@ -65,7 +67,7 @@ void showMenu(string)
   cout << "E: Exit" << endl;
   cout << "X: Clear screen " << endl;
 
-  option = validateString(option);
+ // option = validateString(option);
 
 }
 
@@ -77,31 +79,50 @@ string option = "";
 
   do{
   showMenu();
-  cout << "Please choose and option: " ;
+  //cout << "Please choose an option: " ;
   option = validateString(option);//cin >> option;
   if( option == "A" || option == "a")
   {
-     addition();
+    double n1, n2;
+    cout << "Num1: " ;
+    n1 = validateDouble(n1);
+    cout << "Num2: ";
+    n2 = validateDouble(n2);
+     addition(n1,n2);
   }
   else if(option == "b" || option == "B")
   {
-    multiplication();
+     double n1, n2;
+    cout << "Num1: " ;
+    n1 = validateDouble(n1);
+    cout << "Num2: ";
+    n2 = validateDouble(n2);
+    multiplication(n1,n2);
   }
   else if(option == "c" || option == "C")
-  {
+  {double n1, n2;
     cout << "\nWhich number would you like to divide by?" << endl;
     cout << "A." << n1 << endl;
     cout << "B." << n2 << endl;
   option = validateString(option);
-    division();
+   
+    cout << "Num1: " ;
+    n1 = validateDouble(n1);
+    cout << "Num2: ";
+    n2 = validateDouble(n2);
+    division(n1,n2);
   }
   else if(option == "D" || option == "D")
-  {
+  { double n1, n2;
     cout << "\nWhich number would you like to subtract from?" << endl;
     cout << "A." << n1 << endl;
     cout << "B." << n2 << endl;
+    cout << "Num1: " ;
+    n1 = validateDouble(n1);
+    cout << "Num2: ";
+    n2 = validateDouble(n2);
   option = validateString(option);
-    subtraction();
+    subtraction(n1,n2);
   }
   else if (option == "x" || option == "X")
   {
@@ -121,10 +142,10 @@ string option = "";
 }
 
 
-void addition(double &n1,double &n2, string operation)
+void addition(double &n1,double &n2)
 {
   double sum = 0.00; 
-  cout << (sum = n1 + n2);
+  cout << "The sum of your numbers is: " << (sum = n1 + n2)<< " ." << endl;
 }
 
 
@@ -134,11 +155,11 @@ void addition(double &n1,double &n2, string operation)
 void multiplication (double &n1,double &n2)
 { double sum = 0.00;
 
-  cout << (sum = (n1 * n2));
+  cout << "The sum of your numbers is: " << (sum = (n1 * n2)) << " ." << endl;
 }
 
 
-void division (double &n1,double &n2,string)
+void division (double &n1,double &n2)
 {double sum = 0.00;
 string option = "";
  if(option == "a" || option == "A")
@@ -147,20 +168,20 @@ string option = "";
  }
  else if (option == "b"|| option == "B")
  {
-   cout << (sum = (n2/n1));
+  cout << "The sum of your numbers is: " << (sum = (n2/n1)) << " ." << endl;
  }
 }
-void subtraction(double &n1,double &n2, string)
+void subtraction(double &n1,double &n2)
 {
   double sum = 0.00;
   string option = "";
  if(option == "a" || option == "A")
  {
-   cout << (sum = (n1 - n2));
+  cout << "The sum of your numbers is: " << (sum = (n1 - n2)) << " ." << endl;
  }
  else if (option == "b"|| option == "B")
  {
-   cout << (sum = (n2-n1));
+   cout << "The sum of your numbers is: " << (sum = (n2-n1)) << " ." << endl;
  }
 
 }
